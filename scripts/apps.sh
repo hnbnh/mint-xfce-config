@@ -1,7 +1,9 @@
 #!/bin/bash
 
 apps() {
-	sudo apt-get update
+	# enable i386 multiarch
+	sudo dpkg --add-architecture i386
+	sudo add-apt-repository multiverse
 
 	# zsh, pure prompt
 	sudo apt-get install zsh -y
@@ -35,21 +37,20 @@ apps() {
 	sudo apt install -y redshift redshift-gtk obs-studio mpv neovim steam
 
 	# firejail
-	sudo add-apt-repository ppa:deki/firejail
+	sudo add-apt-repository ppa:deki/firejail -y
 	sudo apt update && sudo apt install firejail firejail-profiles
 
 	# ibus-bamboo
-	sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo && sudo apt update
+	sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo -y && sudo apt update
 	sudo apt install ibus ibus-bamboo --install-recommends && ibus restart
 	env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
 
 	# battery
-	sudo add-apt-repository ppa:linrunner/tlp && sudo apt update
+	sudo add-apt-repository ppa:linrunner/tlp -y && sudo apt update
 	sudo apt install tlp
 	sudo tlp start
 
 	# wine
-	sudo dpkg --add-architecture i386
 	wget -nc https://dl.winehq.org/wine-builds/winehq.key
 	sudo apt-key add winehq.key
 	sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
