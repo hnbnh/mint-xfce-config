@@ -32,8 +32,10 @@ config() {
 	sudo systemctl stop bluetooth
 	sudo systemctl disable bluetooth
 
-	# TODO: turn off some startup apps in /etc/xdg/autostart/
-	# set property Hidden=true
+	# disable some startup apps
+	sudo cp ./assets/mintreport.desktop /usr/share/applications
+	sudo cp ./assets/mintupdate.desktop /usr/share/applications
+	sudo cp ./assets/mintwelcome.desktop /usr/share/applications
 
 	# git & github
 	git config --global core.editor "vim"
