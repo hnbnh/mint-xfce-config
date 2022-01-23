@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Anki
+Exec=anki %f
+TryExec=anki
+Icon=~/Apps/anki/anki.png
+Categories=Education;Languages;KDE;Qt;
+Terminal=false
+Type=Application
+MimeType=application/x-apkg;application/x-anki;application/x-ankiaddon;

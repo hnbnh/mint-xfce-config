@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=DataGrip
+Type=Application
+Terminal=false
+Icon=~/Apps/datagrip/bin/datagrip.png
+Exec=~/Apps/datagrip/bin/datagrip.sh
