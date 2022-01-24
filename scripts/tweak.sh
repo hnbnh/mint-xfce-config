@@ -2,7 +2,7 @@
 
 tweak() {
 	# icon
-	sudo add-apt-repository ppa:papirus/papirus
+	sudo add-apt-repository ppa:papirus/papirus -y
 	sudo apt update && sudo apt install papirus-icon-theme
 
 	# theme
