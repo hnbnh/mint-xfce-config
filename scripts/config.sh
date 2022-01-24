@@ -22,7 +22,7 @@ config() {
 	sudo apt update && sudo apt install xbindkeys xsel xdotool
 	echo "\"echo -n | xsel -n -i; pkill xbindkeys; xdotool click 2; xbindkeys\"\nb:2" >~/.xbindkeysrc
 	xbindkeys -p
-	echo "[Desktop Entry]\nType=Application\nName=Disable middle click\nComment=Disable middle mouse button click to paste\nExec=xbindkeys -p\nOnlyShowIn=XFCE\nRunHook=0\nHidden=false" >~/.config/autostart/disable-middle-click.desktop
+	sudo cp ./assets/disable-middle-click-paste.desktop /usr/share/applications
 
 	# enable SSD TRIM
 	sudo systemctl enable fstrim.timer
