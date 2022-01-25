@@ -6,7 +6,7 @@ tweak() {
 	sudo apt update && sudo apt install papirus-icon-theme
 
 	# theme
-	git clone https://github.com/vinceliuice/Orchis-theme.git ~/Downloads
+	git clone https://github.com/vinceliuice/Orchis-theme.git ~/Downloads/Orchis-theme
 	sudo -u $USERNAME bash ~/Downloads/Orchis-theme/install.sh -t green
 	rm -rf ~/Downloads/Orchis-theme
 
