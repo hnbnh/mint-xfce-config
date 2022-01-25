@@ -80,13 +80,13 @@ apps() {
 		sed -E 's/.*"([^"]+)".*/\1/')
 	# TODO: create a function to deduplicate these blocks
 	curl -L "https://github.com/ankitects/anki/releases/download/$TAG/anki-$TAG-linux.tar.bz2" -o anki.tar.bz2
-	mkdir anki && tar xvjf anki.tar.bz2 -C anki --strip-components 1
+	mkdir anki && tar xjf anki.tar.bz2 -C anki --strip-components 1
 	sudo ln -s ./anki/bin/Anki /usr/local/bin/anki
 
 	# datagrip
 	VERSION=2021.3.4
 	curl -L "https://download.jetbrains.com/datagrip/datagrip-$VERSION.tar.gz" -o datagrip.tar.gz
-	mkdir datagrip && tar -xvzf datagrip.tar.gz -C datagrip --strip-components 1
+	mkdir datagrip && tar -xzf datagrip.tar.gz -C datagrip --strip-components 1
 	sudo ln -s ./datagrip/bin/datagrip.sh /usr/local/bin/datagrip
 
 	cd $cwd
