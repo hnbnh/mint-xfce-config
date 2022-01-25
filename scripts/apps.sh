@@ -54,20 +54,17 @@ apps() {
 	sudo apt-key add winehq.key
 	sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 	sudo apt update && sudo apt install --install-recommends winehq-stable -y
+	rm winehq.key
 
 	# =====================================
-	cwd=$(pwd)
-	cd ~/Downloads
-
 	# insomnia
-	curl -L https://updates.insomnia.rest/downloads/ubuntu/latest -o insomnia.deb
-	sudo dpkg -i insomnia.deb && rm insomnia.deb
+	echo "deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all" |
+		sudo tee -a /etc/apt/sources.list.d/insomnia.list
+	sudo apt update && sudo apt install insomnia
 
 	# vscode
 	curl -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -o vscode.deb
-	sudo dpkg -i vscode.deb && rm vscode.deb
-
-	cd $cwd
+	sudo apt install vscode.deb && rm vscode.deb
 
 	# =====================================
 	cwd=$(pwd)
