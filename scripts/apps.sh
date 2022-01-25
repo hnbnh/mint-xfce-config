@@ -57,6 +57,7 @@ apps() {
 	winecfg
 
 	# =====================================
+	cwd=$(pwd)
 	cd ~/Downloads
 
 	# insomnia
@@ -67,7 +68,10 @@ apps() {
 	curl -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -o vscode.deb
 	sudo dpkg -i vscode.deb && rm vscode.deb
 
+	cd $cwd
+
 	# =====================================
+	cwd=$(pwd)
 	mkdir ~/Apps && cd ~/Apps
 
 	# anki
@@ -78,17 +82,17 @@ apps() {
 	# TODO: create a function to deduplicate these blocks
 	curl -L "https://github.com/ankitects/anki/releases/download/$TAG/anki-$TAG-linux.tar.bz2" -o anki.tar.bz2
 	mkdir anki && tar xvjf anki.tar.bz2 -C anki --strip-components 1
-	PATH=$PATH:~/Apps/anki/bin
-	sudo cp ./assets/Anki.desktop /usr/share/applications
+	sudo ln -s ./anki/bin/Anki /usr/local/bin/anki
 
 	# datagrip
-	$VERSION=2021.3.4
+	VERSION=2021.3.4
 	curl -L "https://download.jetbrains.com/datagrip/datagrip-$VERSION.tar.gz" -o datagrip.tar.gz
 	mkdir datagrip && tar -xvzf datagrip.tar.gz -C datagrip --strip-components 1
-	PATH=$PATH:~/Apps/datagrip/bin
-	sudo cp ./assets/DataGrip.desktop /usr/share/applications
+	sudo ln -s ./datagrip/bin/datagrip.sh /usr/local/bin/datagrip
 
-	cd ~
+	cd $cwd
+	sudo cp ./assets/Anki.desktop /usr/share/applications
+	sudo cp ./assets/DataGrip.desktop /usr/share/applications
 }
 
 apps
