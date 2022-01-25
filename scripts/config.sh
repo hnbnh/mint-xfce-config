@@ -8,6 +8,10 @@ config() {
 	# disable window grouping
 	xfconf-query --channel 'xfce4-panel' --property '/plugins/plugin-3/grouping' --set 0
 
+	# enable natuarl touchpad scrolling
+	touchpadId=$(xinput --list | grep -Poi 'touchpad.*id=\K[0-9]+')
+	xinput --set-prop $touchpadId 'libinput Natural Scrolling Enabled' 1
+
 	# increase maximum volumn
 	pactl set-sink-volume 0 150%
 
