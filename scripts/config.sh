@@ -9,6 +9,9 @@ config() {
 	touchpadId=$(xinput --list | grep -Poi 'touchpad.*id=\K[0-9]+')
 	xinput --set-prop $touchpadId 'libinput Natural Scrolling Enabled' 1
 
+	# touch to click
+	xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0
+
 	# increase maximum volumn
 	pactl set-sink-volume 0 150%
 
@@ -33,7 +36,7 @@ config() {
 	sudo systemctl disable bluetooth
 
 	# update autostart folder
-	sudo cp ./assets/tweak.desktop  ~/.config/autostart/
+	sudo cp ./assets/config.desktop  ~/.config/autostart/
 	sudo cp ./assets/mintreport.desktop ~/.config/autostart/
 	sudo cp ./assets/mintupdate.desktop ~/.config/autostart/
 	sudo cp ./assets/mintwelcome.desktop ~/.config/autostart/
