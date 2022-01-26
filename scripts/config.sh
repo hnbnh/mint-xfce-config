@@ -1,9 +1,8 @@
 #!/bin/bash
 
 config() {
-	# select fastest mirror
-	# https://askubuntu.com/a/719551
-	curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo `curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz` {}' | sort -g -r | head -1 | awk '{ print $2  }'
+	# switch to local mirror
+	sudo mint-switch-to-local-mirror
 
 	# enable natuarl touchpad scrolling
 	touchpadId=$(xinput --list | grep -Poi 'touchpad.*id=\K[0-9]+')
