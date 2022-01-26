@@ -5,11 +5,9 @@ config() {
 	sudo mint-switch-to-local-mirror
 
 	# enable natuarl touchpad scrolling
+	# w/ tap to click
 	touchpadId=$(xinput --list | grep -Poi 'touchpad.*id=\K[0-9]+')
-	xinput --set-prop $touchpadId 'libinput Natural Scrolling Enabled' 1
-
-	# touch to click
-	xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0
+	echo "xinput --set-prop $touchpadId 'libinput Natural Scrolling Enabled' 1\nxinput --set-prop $touchpadId 'libinput Tapping Enabled' 1" >>.xsessionrc
 
 	# increase maximum volumn
 	pactl set-sink-volume 0 150%
