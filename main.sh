@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ ! -f .env ]; then
+    echo "Please create .env"
+    exit 1
+fi
+
 export $(cat .env | xargs)
 
 bash ./scripts/config.sh
