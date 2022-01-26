@@ -10,7 +10,7 @@ apps() {
 	chsh -s $(which zsh)
 	mkdir -p "$HOME/.zsh"
 	git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-	echo "fpath+=$HOME/.zsh/pure" >~/.zshrc
+	echo "fpath+=$HOME/.zsh/pure\nautoload -U promptinit; promptinit\nprompt pure" >>~/.zshrc
 
 	# docker
 	sudo apt install ca-certificates curl gnupg lsb-release -y
