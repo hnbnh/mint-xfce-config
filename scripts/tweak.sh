@@ -6,6 +6,10 @@ tweak() {
 	sudo apt update && sudo apt install papirus-icon-theme
 	xfconf-query -c xsettings -p /Net/IconThemeName -s Papirus
 
+	sudo add-apt-repository ppa:papirus/papirus -y
+	sudo apt-get update && sudo apt-get install papirus-folders
+	papirus-folders -C teal --theme Papirus
+
 	# theme
 	git clone https://github.com/vinceliuice/Orchis-theme.git ~/Downloads/Orchis-theme
 	sudo -u $USERNAME bash ~/Downloads/Orchis-theme/install.sh -t green
