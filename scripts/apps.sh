@@ -27,6 +27,7 @@ apps() {
 	sudo -u $USERNAME curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 
 	# ungoogled-chromium
+	# TODO: update codename
 	echo 'deb http://download.opensuse.org/repositories/home:/ungoogled_chromium/Ubuntu_Focal/ /' | sudo tee /etc/apt/sources.list.d/home-ungoogled_chromium.list >/dev/null
 	curl -s 'https://download.opensuse.org/repositories/home:/ungoogled_chromium/Ubuntu_Focal/Release.key' | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home-ungoogled_chromium.gpg >/dev/null
 	sudo apt update && sudo apt install ungoogled-chromium -y
@@ -53,6 +54,7 @@ apps() {
 	# wine
 	wget -nc https://dl.winehq.org/wine-builds/winehq.key
 	sudo apt-key add winehq.key
+	# TODO: update codename
 	sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 	sudo apt update && sudo apt install --install-recommends winehq-stable -y
 	rm winehq.key
@@ -79,17 +81,16 @@ apps() {
 	# TODO: create a function to deduplicate these blocks
 	curl -L "https://github.com/ankitects/anki/releases/download/$TAG/anki-$TAG-linux.tar.bz2" -o anki.tar.bz2
 	mkdir anki && tar xjf anki.tar.bz2 -C anki --strip-components 1
-	sudo ln -s ./anki/bin/Anki /usr/local/bin/anki
+	sudo ln -s ~/Apps/anki/bin/Anki /usr/local/bin/anki
 
 	# datagrip
 	VERSION=2021.3.4
 	curl -L "https://download.jetbrains.com/datagrip/datagrip-$VERSION.tar.gz" -o datagrip.tar.gz
 	mkdir datagrip && tar -xzf datagrip.tar.gz -C datagrip --strip-components 1
-	sudo ln -s ./datagrip/bin/datagrip.sh /usr/local/bin/datagrip
+	sudo ln -s ~/Apps/datagrip/bin/datagrip.sh /usr/local/bin/datagrip
 
 	cd $cwd
-	sudo cp ./assets/Anki.desktop /usr/share/applications
-	sudo cp ./assets/DataGrip.desktop /usr/share/applications
+	sudo cp ./assets/applications/* /usr/share/applications
 }
 
 apps
