@@ -24,7 +24,7 @@ apps() {
 	sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 	# nvm
-	sudo -u $USERNAME curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+	sudo -u $USERNAME curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 
 	# ungoogled-chromium
 	echo 'deb http://download.opensuse.org/repositories/home:/ungoogled_chromium/Ubuntu_Focal/ /' | sudo tee /etc/apt/sources.list.d/home-ungoogled_chromium.list >/dev/null
@@ -33,7 +33,7 @@ apps() {
 
 	# various apps
 	sudo apt update
-	sudo apt install -y redshift redshift-gtk obs-studio mpv neovim steam
+	sudo apt install -y obs-studio mpv neovim steam
 
 	# firejail
 	sudo add-apt-repository ppa:deki/firejail -y
