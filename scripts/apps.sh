@@ -37,12 +37,13 @@ apps() {
 
 	# firejail
 	sudo add-apt-repository ppa:deki/firejail -y
-	sudo apt update && sudo apt install firejail firejail-profiles
+	sudo apt update && sudo apt install firejail firejail-profiles -y
 
 	# ibus-bamboo
 	sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo -y && sudo apt update
 	sudo apt install ibus ibus-bamboo --install-recommends && ibus restart
 	env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
+	im-config -n ibus
 
 	# battery
 	sudo add-apt-repository ppa:linrunner/tlp -y && sudo apt update
