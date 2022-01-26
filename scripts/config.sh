@@ -5,9 +5,6 @@ config() {
 	# https://askubuntu.com/a/719551
 	curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo `curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz` {}' | sort -g -r | head -1 | awk '{ print $2  }'
 
-	# disable window grouping
-	xfconf-query --channel 'xfce4-panel' --property '/plugins/plugin-3/grouping' --set 0
-
 	# enable natuarl touchpad scrolling
 	touchpadId=$(xinput --list | grep -Poi 'touchpad.*id=\K[0-9]+')
 	xinput --set-prop $touchpadId 'libinput Natural Scrolling Enabled' 1
@@ -23,7 +20,7 @@ config() {
 
 	# disable middle mouse button click to paste
 	# https://askubuntu.com/a/1144039
-	sudo apt update && sudo apt install xbindkeys xsel xdotool
+	sudo apt update && sudo apt install xbindkeys xsel xdotool -y
 	echo "\"echo -n | xsel -n -i; pkill xbindkeys; xdotool click 2; xbindkeys\"\nb:2" >~/.xbindkeysrc
 	xbindkeys -p
 	sudo cp ./assets/disable-middle-click-paste.desktop /usr/share/applications
