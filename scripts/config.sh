@@ -40,6 +40,11 @@ config() {
 	sudo cp ./assets/mintreport.desktop ~/.config/autostart/
 	sudo cp ./assets/mintupdate.desktop ~/.config/autostart/
 	sudo cp ./assets/mintwelcome.desktop ~/.config/autostart/
+	sudo cp ./assets/blueberry-obex-agent.desktop ~/.config/autostart/
+	sudo cp ./assets/blueberry-tray.desktop ~/.config/autostart/
+	sudo cp ./assets/nvidia-prime.desktop ~/.config/autostart/
+	sudo cp ./assets/print-applet.desktop ~/.config/autostart/
+	sudo cp ./assets/sticky.desktop ~/.config/autostart/
 
 	# git & github
 	git config --global core.editor "vim"
