@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Touchpad config
+Exec=sh -c "xbindkeys -p; xinput --set-prop $touchpadId 'libinput Natural Scrolling Enabled' 1"
+OnlyShowIn=XFCE
+RunHook=0
+Hidden=false

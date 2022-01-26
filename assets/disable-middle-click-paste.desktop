@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Disable middle click to paste
-Comment=Disable middle mouse button click to paste
-Exec=xbindkeys -p
-OnlyShowIn=XFCE
-RunHook=0
-Hidden=false

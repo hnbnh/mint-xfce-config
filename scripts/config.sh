@@ -23,7 +23,6 @@ config() {
 	sudo apt update && sudo apt install xbindkeys xsel xdotool -y
 	echo "\"echo -n | xsel -n -i; pkill xbindkeys; xdotool click 2; xbindkeys\"\nb:2" >~/.xbindkeysrc
 	xbindkeys -p
-	sudo cp ./assets/disable-middle-click-paste.desktop /usr/share/applications
 
 	# enable SSD TRIM
 	sudo systemctl enable fstrim.timer
@@ -33,10 +32,11 @@ config() {
 	sudo systemctl stop bluetooth
 	sudo systemctl disable bluetooth
 
-	# disable some startup apps
-	sudo cp ./assets/mintreport.desktop /usr/share/applications
-	sudo cp ./assets/mintupdate.desktop /usr/share/applications
-	sudo cp ./assets/mintwelcome.desktop /usr/share/applications
+	# update autostart folder
+	sudo cp ./assets/tweak.desktop  ~/.config/autostart/
+	sudo cp ./assets/mintreport.desktop ~/.config/autostart/
+	sudo cp ./assets/mintupdate.desktop ~/.config/autostart/
+	sudo cp ./assets/mintwelcome.desktop ~/.config/autostart/
 
 	# git & github
 	git config --global core.editor "vim"
