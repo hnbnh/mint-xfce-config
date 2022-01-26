@@ -9,8 +9,11 @@ apps() {
 	sudo apt install zsh -y
 	chsh -s $(which zsh)
 	mkdir -p "$HOME/.zsh"
-	git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+	sudo git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 	echo "fpath+=$HOME/.zsh/pure\nautoload -U promptinit; promptinit\nprompt pure" >>~/.zshrc
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
+	echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
+	source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 	# docker
 	sudo apt install ca-certificates curl gnupg lsb-release -y
