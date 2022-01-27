@@ -50,6 +50,7 @@ add() {
 	sudo apt install ibus ibus-bamboo --install-recommends && ibus restart
 	env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
 	im-config -n ibus
+	gsettings set org.freedesktop.ibus.general.hotkey triggers "['<Control><Shift>space']"
 
 	# battery
 	sudo add-apt-repository ppa:linrunner/tlp -y && sudo apt update
