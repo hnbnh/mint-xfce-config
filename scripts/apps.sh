@@ -12,7 +12,7 @@ add() {
 	git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 	echo -e "fpath+=$HOME/.zsh/pure\nautoload -U promptinit; promptinit\nprompt pure" >>~/.zshrc
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
-	echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
+	echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>"$HOME/.zshrc"
 	source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 	# docker
@@ -39,7 +39,12 @@ add() {
 
 	# various apps
 	sudo apt update
-	sudo apt install -y obs-studio mpv neovim steam
+	sudo apt install -y obs-studio mpv steam
+
+	# neovim
+	sudo add-apt-repository ppa:neovim-ppa/stable -y
+	sudo apt update
+	sudo apt install neovim -y
 
 	# firejail
 	sudo add-apt-repository ppa:deki/firejail -y
