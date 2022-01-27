@@ -7,7 +7,7 @@ config() {
 	# enable natuarl touchpad scrolling
 	# w/ tap to click
 	touchpadId=$(xinput --list | grep -Poi 'touchpad.*id=\K[0-9]+')
-	echo "xinput --set-prop $touchpadId 'libinput Natural Scrolling Enabled' 1\nxinput --set-prop $touchpadId 'libinput Tapping Enabled' 1" >>~/.xsessionrc
+	echo -e "xinput --set-prop $touchpadId 'libinput Natural Scrolling Enabled' 1\nxinput --set-prop $touchpadId 'libinput Tapping Enabled' 1" >>~/.xsessionrc
 
 	# increase maximum volumn
 	pactl set-sink-volume 0 150%
@@ -33,6 +33,7 @@ config() {
 	sudo systemctl disable bluetooth
 
 	# update autostart folder
+    mkdir -p ~/.config/autostart
 	sudo cp ./assets/autostart/* ~/.config/autostart
 
 	# git & github

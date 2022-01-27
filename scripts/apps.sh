@@ -9,8 +9,8 @@ add() {
 	sudo apt install zsh -y
 	chsh -s $(which zsh)
 	mkdir -p "$HOME/.zsh"
-	sudo git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-	echo "fpath+=$HOME/.zsh/pure\nautoload -U promptinit; promptinit\nprompt pure" >>~/.zshrc
+	git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+	echo -e "fpath+=$HOME/.zsh/pure\nautoload -U promptinit; promptinit\nprompt pure" >>~/.zshrc
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
 	echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
 	source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -47,14 +47,14 @@ add() {
 
 	# ibus-bamboo
 	sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo -y && sudo apt update
-	sudo apt install ibus ibus-bamboo --install-recommends && ibus restart
+	sudo apt install ibus ibus-bamboo -y --install-recommends && ibus restart
 	env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
 	im-config -n ibus
 	gsettings set org.freedesktop.ibus.general.hotkey triggers "['<Control><Shift>space']"
 
 	# battery
 	sudo add-apt-repository ppa:linrunner/tlp -y && sudo apt update
-	sudo apt install tlp
+	sudo apt install tlp -y
 	sudo tlp start
 
 	# wine
@@ -99,9 +99,4 @@ add() {
 	sudo cp ./assets/applications/* /usr/share/applications
 }
 
-remove() {
-
-}
-
 add
-remove
