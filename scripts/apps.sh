@@ -104,4 +104,9 @@ add() {
 	sudo cp ./assets/applications/* /usr/share/applications
 }
 
+remove() {
+	sudo apt purge warpinator webapp-manager transmission-gtk thunderbird hexchat -y
+}
+
 add
+remove
