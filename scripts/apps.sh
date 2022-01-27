@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apps() {
+add() {
 	# enable i386 multiarch
 	sudo dpkg --add-architecture i386
 	sudo add-apt-repository multiverse
@@ -28,6 +28,8 @@ apps() {
 
 	# nvm
 	sudo -u $USERNAME curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
+	mkdir -p ~/.config/nvim
+	echo "inoremap jk <esc>\ncnoremap jk <C-C>" >>~/.config/nvim/init.vim
 
 	# ungoogled-chromium
 	# TODO: update codename
@@ -96,4 +98,9 @@ apps() {
 	sudo cp ./assets/applications/* /usr/share/applications
 }
 
-apps
+remove() {
+
+}
+
+add
+remove
