@@ -10,6 +10,13 @@ font() {
 
 	# fira code
 	sudo apt install fonts-firacode
+	# TODO: create a utility to get latest tag name from github
+	TAG=$(curl --silent "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest" |
+		grep '"tag_name":' |
+		sed -E 's/.*"([^"]+)".*/\1/')
+	curl -L "https://github.com/ryanoasis/nerd-fonts/releases/download/$TAG/FiraCode.zip" -o ~/Downloads/FiraCode.zip
+	unzip ~/Downloads/FiraCode.zip -d ~/.fonts
+	rm ~/Downloads/FiraCode.zip && rm ~/.fonts/*Windows*
 
 	sudo fc-cache -f -v
 }
