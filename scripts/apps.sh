@@ -12,7 +12,8 @@ add() {
 	git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 	echo -e "fpath+=$HOME/.zsh/pure\nautoload -U promptinit; promptinit\nprompt pure" >>~/.zshrc
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
-	echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>"$HOME/.zshrc"
+	echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>~/.zshrc
+	echo "zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'" >>~/.zshrc
 	source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 	# docker
