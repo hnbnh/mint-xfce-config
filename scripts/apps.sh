@@ -5,16 +5,16 @@ add() {
 	sudo dpkg --add-architecture i386
 	sudo add-apt-repository multiverse
 
-	# zsh, pure prompt
+	# zsh
 	sudo apt install zsh -y
 	chsh -s $(which zsh)
 	mkdir -p "$HOME/.zsh"
-	git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-	echo -e "fpath+=$HOME/.zsh/pure\nautoload -U promptinit; promptinit\nprompt pure" >>~/.zshrc
+
+	# zsh plugin
+	sudo -u $USERNAME sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
 	echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>~/.zshrc
-	echo "zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'" >>~/.zshrc
-	source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+	sudo -u $USERNAME curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 
 	# docker
 	sudo apt install ca-certificates curl gnupg lsb-release -y
