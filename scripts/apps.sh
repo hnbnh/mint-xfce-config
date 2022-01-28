@@ -28,8 +28,7 @@ add() {
 
 	# nvm
 	sudo -u $USERNAME curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
-	mkdir -p ~/.config/nvim
-	echo "inoremap jk <esc>\ncnoremap jk <C-C>" >>~/.config/nvim/init.vim
+	echo -e "export NVM_DIR=~/.nvm\n[ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"" >>~/.zshrc
 
 	# ungoogled-chromium
 	# TODO: use unportable version
@@ -45,6 +44,8 @@ add() {
 	sudo add-apt-repository ppa:neovim-ppa/stable -y
 	sudo apt update
 	sudo apt install neovim -y
+	mkdir -p ~/.config/nvim
+	echo -e "inoremap jk <esc>\ncnoremap jk <C-C>" >>~/.config/nvim/init.vim
 
 	# firejail
 	sudo add-apt-repository ppa:deki/firejail -y
