@@ -10,10 +10,8 @@ add() {
 	chsh -s $(which zsh)
 	mkdir -p "$HOME/.zsh"
 
-	# zsh plugin
+	# zsh fw & prompt
 	sudo -u $USERNAME sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
-	echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>~/.zshrc
 	sudo -u $USERNAME curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 
 	# docker
