@@ -43,8 +43,9 @@ add() {
 	sudo add-apt-repository ppa:neovim-ppa/stable -y
 	sudo apt update
 	sudo apt install neovim -y
-	mkdir -p ~/.config/nvim
-	echo -e "inoremap jk <esc>\ncnoremap jk <C-C>" >>~/.config/nvim/init.vim
+	NVIM_CONFIG_FOLDER=/root/.config/nvim
+	sudo mkdir -p $NVIM_CONFIG_FOLDER
+	echo -e "inoremap jk <esc>\ncnoremap jk <C-C>" | sudo tee -a "$NVIM_CONFIG_FOLDER/init.vim"
 
 	# firejail
 	sudo add-apt-repository ppa:deki/firejail -y
