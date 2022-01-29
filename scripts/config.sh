@@ -38,6 +38,8 @@ config() {
 
 	# git & github
 	git config --global core.editor "vim"
+	git config user.name $GITHUB_NAME
+	git config user.email $GITHUB_EMAIL
 	# TODO: setup ssh key for github
 
 	# TODO: update terminal font, increase battery critical level
