@@ -37,7 +37,7 @@ add() {
 
 	# various apps
 	sudo apt update
-	sudo apt install -y obs-studio mpv steam
+	sudo apt install -y obs-studio mpv steam cheese
 
 	# neovim
 	sudo add-apt-repository ppa:neovim-ppa/stable -y
