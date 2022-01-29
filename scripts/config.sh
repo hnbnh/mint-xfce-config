@@ -39,6 +39,9 @@ config() {
 	# git & github
 	git config --global core.editor "vim"
 	# TODO: setup ssh key for github
+
+	# TODO: update terminal font, increase battery critical level
+	# add screenshot to panel
 }
 
 config
