@@ -29,6 +29,11 @@ add() {
 	sudo -u $USERNAME curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 	echo -e "export NVM_DIR=~/.nvm\n[ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"" >>~/.zshrc
 
+	# miniconda
+	curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/Downloads/miniconda3.sh
+	sudo -u $USERNAME zsh ~/Downloads/miniconda3.sh -b -p $HOME/miniconda
+	sudo ln -s ~/miniconda/bin/conda /usr/bin/conda
+
 	# ungoogled-chromium
 	# TODO: use unportable version
 	echo 'deb http://download.opensuse.org/repositories/home:/ungoogled_chromium/Ubuntu_Focal/ /' | sudo tee /etc/apt/sources.list.d/home-ungoogled_chromium.list >/dev/null
