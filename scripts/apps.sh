@@ -10,6 +10,12 @@ add() {
 	chsh -s $(which zsh)
 	mkdir -p "$HOME/.zsh"
 
+	# miniconda
+	curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/Downloads/miniconda3.sh
+	sudo -u $USERNAME zsh ~/Downloads/miniconda3.sh -b -p $HOME/miniconda
+	sudo ln -s ~/miniconda/bin/conda /usr/bin/conda
+	conda init zsh
+
 	# zsh fw & prompt
 	sudo -u $USERNAME sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 	sudo -u $USERNAME curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
@@ -29,11 +35,6 @@ add() {
 	sudo -u $USERNAME curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 	echo -e "export NVM_DIR=~/.nvm\n[ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"" >>~/.zshrc
 
-	# miniconda
-	curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/Downloads/miniconda3.sh
-	sudo -u $USERNAME zsh ~/Downloads/miniconda3.sh -b -p $HOME/miniconda
-	sudo ln -s ~/miniconda/bin/conda /usr/bin/conda
-
 	# ungoogled-chromium
 	# TODO: use unportable version
 	echo 'deb http://download.opensuse.org/repositories/home:/ungoogled_chromium/Ubuntu_Focal/ /' | sudo tee /etc/apt/sources.list.d/home-ungoogled_chromium.list >/dev/null
@@ -43,6 +44,10 @@ add() {
 	# various apps
 	sudo apt update
 	sudo apt install -y obs-studio mpv steam cheese
+
+	# youtube-dl
+	sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+	sudo chmod a+rx /usr/local/bin/youtube-dl
 
 	# neovim
 	sudo add-apt-repository ppa:neovim-ppa/stable -y
