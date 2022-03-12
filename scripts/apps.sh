@@ -31,9 +31,12 @@ add() {
   sudo chmod +x /usr/local/bin/docker-compose
   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-  # nvm
-  sudo -u $USERNAME curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
-  echo -e "export NVM_DIR=~/.nvm\n[ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"" >>~/.zshrc
+  # fnm
+  curl -fsSL https://fnm.vercel.app/install | zsh
+  echo -e "#fnm\nexport PATH=/$HOME/.fnm:\$PATH\neval \"\`fnm env\`\"" >>~/.zshrc
+  mkdir $HOME/.zfunc
+  echo "fpath+=~/.zfunc\ncompinit" >> $HOME/.zshrc
+  fnm completions --shell zsh > $HOME/.zfunc/_fnm
 
   # ungoogled-chromium
   # TODO: use unportable version
